@@ -1,3 +1,13 @@
+const https = require('https');
+
+function cronJob (){
+    setInterval(() => {
+        https.get('https://honey-gold-server.onrender.com', (res) => {
+            console.log('pinging...');
+        })
+    }, 840000);
+}
+
 const { productModel } = require('../schema/schema');
 
 const test = async (data) => {
@@ -16,5 +26,6 @@ const test = async (data) => {
 }
 
 module.exports = {
+    cronJob,
     test
 }

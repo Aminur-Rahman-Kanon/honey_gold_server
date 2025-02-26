@@ -3,10 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
-// const { productModel } = require('./schema/schema');
-// const { test } = require('./utilities/utilities');
+const { cronJob } = require('./utilities/utilities');
+const { test } = require('./utilities/utilities');
 app.use(express.static('public'));
-app.use(cors({ origin: ['http://localhost:3000'] }));
+app.use(cors({ origin: ['http://localhost:3000', 'https://honey-gold-client.onrender.com'] }));
 app.use(express.json());
 
 const fetchProducts = require('./routes/fetchProuducts');
@@ -22,7 +22,7 @@ const fetchProducts = require('./routes/fetchProuducts');
 //         },
 //         color: ['red', 'green', 'blue'],
 //         img: [
-//             {id: 1, img: `http://localhost:8080/images/products/jewellery/jewellery_${i+1}.png`}
+//             {id: 1, img: `https://honey-gold-server.onrender.com/images/products/jewellery/jewellery_${i+1}.png`}
 //         ],
 //         material: 'unknown',
 //         pattern: 'unknown',
@@ -46,5 +46,6 @@ app.listen('8080', (err) => {
     if (err) {
         console.log(err);
     }
+    cronJob();
     console.log('server is running on port 8080');
 })
