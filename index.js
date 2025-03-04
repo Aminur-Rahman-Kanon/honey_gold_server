@@ -6,7 +6,7 @@ require('dotenv').config();
 const { cronJob } = require('./utilities/utilities');
 const { test } = require('./utilities/utilities');
 app.use(express.static('public'));
-app.use(cors({ origin: ['http://localhost:3000', 'https://honey-gold-client.onrender.com'] }));
+app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173', 'https://honey-gold-client.onrender.com'] }));
 app.use(express.json());
 
 const fetchProducts = require('./routes/fetchProuducts');
